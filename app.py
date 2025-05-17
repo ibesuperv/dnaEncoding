@@ -1,3 +1,5 @@
+# app.py
+
 import streamlit as st
 from encode import encode_image_to_dna
 from decode import decode_dna_to_image
