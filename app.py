@@ -86,3 +86,41 @@ elif mode == "Decode DNA to Text":
         except Exception as e:
             st.error(f"Error: {e}")
         os.remove("temp_dna_text.txt")
+
+
+with st.expander("🧠 How It Works + DAA Concepts"):
+    st.markdown("""
+    ### 🧬 Working Principle of DNA Encoder & Decoder
+
+    **1. Image/Text to Binary:**
+    - The image is read byte-by-byte and converted to binary using standard 8-bit encoding.
+
+    **2. Compression:**
+    - Compression is done using the `zlib` algorithm, which uses **Huffman Coding** internally (a **Greedy Algorithm**).
+
+    **3. Binary to DNA Mapping:**
+    - Each 2-bit binary is mapped to a DNA nucleotide (A, C, G, T). This is a simple **lookup-based transformation** (constant-time operation).
+
+    **4. DNA to Binary (Decoding):**
+    - Reverse lookup converts DNA characters back to binary pairs.
+
+    **5. Decompression:**
+    - Decompression reverses Huffman coding to reconstruct the original binary.
+
+    **6. Reconstruct File/Text:**
+    - Binary is then decoded to an image (written as `.png` or `.jpg`) or converted to ASCII text.
+
+    ---
+
+    ### 📘 DAA Concepts Used
+
+    | Concept              | Description |
+    |----------------------|-------------|
+    | **Greedy Algorithm** | Huffman coding (used internally by zlib) chooses the best local choice (shortest code for frequent symbols) to build the optimal prefix code. |
+    | **Divide and Conquer** | `zlib` compression splits input into blocks, compresses individually (independent subproblems). |
+    | **Bit Manipulation** | Binary-to-DNA mapping and vice-versa uses efficient bit-level operations. |
+    | **Lookup Tables**    | Used for fast conversion between binary ↔ DNA. |
+    | **Algorithm Analysis** | Compression ratio and time complexity are key concerns in analyzing the efficiency of encoding/decoding. |
+
+    > 🧪 This app uses basic algorithmic strategies from DAA to simulate how biological encoding might work in digital systems.
+    """)
